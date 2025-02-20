@@ -1,4 +1,4 @@
-package ui
+package ui //test
 
 type Action struct {
 	Code int
