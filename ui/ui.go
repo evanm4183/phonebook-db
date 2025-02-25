@@ -37,6 +37,7 @@ func Run() {
 	switch selection {
 	case 1:
 		fmt.Println("Case 1")
+		actions[0].Invoke()
 	case 2:
 		fmt.Println("Case 2")
 	case 3:
