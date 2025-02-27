@@ -2,7 +2,6 @@ package ui
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 	"phonebook/db"
 )
@@ -17,5 +16,5 @@ func addContact() {
 	contact.PhoneNumber = getInput("Phone Number: ", reader)
 	contact.Occupation = getInput("Occupation: ", reader)
 
-	fmt.Println(contact)
+	db.AddContact(contact)
 }
