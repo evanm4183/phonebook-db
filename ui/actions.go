@@ -36,7 +36,7 @@ func GetAllActions() [6]Action {
 	actions := [6]Action{
 		{1, "Get All Records", GetAllRecords},
 		{2, "Get Record By ID", GetRecordById},
-		{3, "Add Record", AddRecord},
+		{3, "Add Contact", addContact},
 		{4, "Update Record", UpdateRecord},
 		{5, "Delete Record", DeleteRecord},
 		{6, "Search Records", SearchRecord},
@@ -64,10 +64,6 @@ func GetAllRecords() {
 
 func GetRecordById() {
 	fmt.Println("Get Record By ID")
-}
-
-func AddRecord() {
-	fmt.Println("Add Record")
 }
 
 func DeleteRecord() {
