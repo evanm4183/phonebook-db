@@ -1,10 +1,10 @@
 package db
 
 type Contact struct {
-	Id          int
-	FirstName   string
-	LastName    string
-	Address     string
-	PhoneNumber string
-	Occupation  string
+	Id          int    `json:"id"`
+	FirstName   string `json:"firstName"`
+	LastName    string `json:"lastName"`
+	Address     string `json:"address"`
+	PhoneNumber string `json:"phoneNumber`
+	Occupation  string `json:"occupation`
 }
