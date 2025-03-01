@@ -5,6 +5,6 @@ type Contact struct {
 	FirstName   string `json:"firstName"`
 	LastName    string `json:"lastName"`
 	Address     string `json:"address"`
-	PhoneNumber string `json:"phoneNumber`
-	Occupation  string `json:"occupation`
+	PhoneNumber string `json:"phoneNumber"`
+	Occupation  string `json:"occupation"`
 }
