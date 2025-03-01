@@ -34,7 +34,7 @@ func (actionMap ActionMap) PrintActions() {
 
 func GetAllActions() []Action {
 	actions := []Action{
-		{1, "Get All Records", GetAllRecords},
+		{1, "Get All Records", getAllContacts},
 		{2, "Get Record By ID", GetRecordById},
 		{3, "Add Contact", addContact},
 		{4, "Update Record", UpdateRecord},
@@ -57,10 +57,6 @@ func BuildActionMap() ActionMap {
 	var actionMap ActionMap = m
 
 	return actionMap
-}
-
-func GetAllRecords() {
-	fmt.Println("Get All Records")
 }
 
 func GetRecordById() {
