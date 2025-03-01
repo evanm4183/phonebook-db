@@ -22,4 +22,10 @@ func AddContact(contact Contact) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Writing a newline at the end so that each contact will have it's separate line
+	_, err = file.WriteString("\n")
+	if err != nil {
+		log.Fatal(err)
+	}
 }

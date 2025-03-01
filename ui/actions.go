@@ -32,14 +32,15 @@ func (actionMap ActionMap) PrintActions() {
 	}
 }
 
-func GetAllActions() [6]Action {
-	actions := [6]Action{
+func GetAllActions() []Action {
+	actions := []Action{
 		{1, "Get All Records", GetAllRecords},
 		{2, "Get Record By ID", GetRecordById},
 		{3, "Add Contact", addContact},
 		{4, "Update Record", UpdateRecord},
 		{5, "Delete Record", DeleteRecord},
 		{6, "Wipe DB", WipeDatabase},
+		{7, "Seed DB", SeedDatabase},
 	}
 
 	return actions
