@@ -39,6 +39,7 @@ func GetAllActions() [6]Action {
 		{3, "Add Contact", addContact},
 		{4, "Update Record", UpdateRecord},
 		{5, "Delete Record", DeleteRecord},
+		{6, "Wipe DB", WipeDatabase},
 	}
 
 	return actions
