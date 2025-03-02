@@ -38,7 +38,7 @@ func GetAllActions() []Action {
 		{2, "Get Contact By Id", getById},
 		{3, "Add Contact", addContact},
 		{4, "Update Record", updateContact},
-		{5, "Delete Record", DeleteRecord},
+		{5, "Delete Record", deleteContact},
 		{6, "Wipe DB", WipeDatabase},
 		{7, "Seed DB", SeedDatabase},
 	}
@@ -57,10 +57,6 @@ func BuildActionMap() ActionMap {
 	var actionMap ActionMap = m
 
 	return actionMap
-}
-
-func DeleteRecord() {
-	fmt.Println("Delete Record")
 }
 
 func SearchRecord() {
