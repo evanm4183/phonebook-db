@@ -7,6 +7,9 @@ import (
 )
 
 func AddContact(contact Contact) {
+	id := getNextIdThenIncrement()
+	contact.Id = id
+
 	file, err := os.OpenFile("database.txt", os.O_APPEND, 0644)
 	if err != nil {
 		log.Fatal(err)

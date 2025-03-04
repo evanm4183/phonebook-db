@@ -11,4 +11,6 @@ func WipeDatabase() {
 		log.Fatal(err)
 	}
 	defer file.Close()
+
+	resetId()
 }
