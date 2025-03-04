@@ -14,20 +14,23 @@ func Run() {
 
 	printSeparator()
 	fmt.Print("Welcome to the Phone Book\n\n")
-	actionMap.PrintActions()
-	fmt.Println()
 
-	selection := getInput("Select an action: ", reader)
-	code, err := strconv.Atoi(selection)
-	if err != nil {
-		log.Fatal(err)
-	}
+	for true {
+		actionMap.PrintActions()
+		fmt.Println()
+		selection := getInput("Select an action: ", reader)
+		code, err := strconv.Atoi(selection)
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	action, ok := actionMap[code]
-	if ok {
+		action, ok := actionMap[code]
+		if ok {
+			printSeparator()
+			action.Invoke()
+		} else {
+			fmt.Println("Action not found")
+		}
 		printSeparator()
-		action.Invoke()
-	} else {
-		fmt.Println("Action not found")
 	}
 }
