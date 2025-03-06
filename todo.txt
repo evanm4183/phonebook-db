@@ -4,8 +4,4 @@ Todos:
 
 - Make readme
 
-- Improve the ui (make it a loop)
-
-- Refactor error handling
-
 - Refactor methods (find, update, delete, add)
