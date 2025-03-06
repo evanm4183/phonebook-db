@@ -5,7 +5,13 @@ import (
 	"phonebook/db"
 )
 
-func WipeDatabase() {
-	db.WipeDatabase()
-	fmt.Println("Database successfully wiped.")
+func WipeDatabase() error {
+	err := db.WipeDatabase()
+	if err != nil {
+		return err
+	} else {
+		fmt.Println("Database successfully wiped.")
+	}
+
+	return nil
 }

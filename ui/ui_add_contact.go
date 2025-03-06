@@ -6,7 +6,7 @@ import (
 	"phonebook/db"
 )
 
-func addContact() {
+func addContact() error {
 	reader := bufio.NewReader(os.Stdin)
 	contact := db.Contact{}
 
@@ -16,5 +16,10 @@ func addContact() {
 	contact.PhoneNumber = getInput("Phone Number: ", reader)
 	contact.Occupation = getInput("Occupation: ", reader)
 
-	db.AddContact(contact)
+	err := db.AddContact(contact)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

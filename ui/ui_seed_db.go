@@ -5,7 +5,13 @@ import (
 	"phonebook/db"
 )
 
-func SeedDatabase() {
-	db.SeedDatabase(10)
-	fmt.Println("Database seeded successfully")
+func SeedDatabase() error {
+	err := db.SeedDatabase(10)
+	if err != nil {
+		return err
+	} else {
+		fmt.Println("Database seeded successfully")
+	}
+
+	return nil
 }

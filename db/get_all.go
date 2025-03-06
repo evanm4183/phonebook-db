@@ -2,15 +2,14 @@ package db
 
 import (
 	"encoding/json"
-	"log"
 	"os"
 	"strings"
 )
 
-func GetAllContacts() []Contact {
+func GetAllContacts() ([]Contact, error) {
 	data, err := os.ReadFile("database.txt")
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	contacts := []Contact{}
@@ -22,5 +21,5 @@ func GetAllContacts() []Contact {
 		contacts = append(contacts, c)
 	}
 
-	return contacts
+	return contacts, nil
 }

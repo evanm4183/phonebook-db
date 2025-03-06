@@ -1,16 +1,16 @@
 package db
 
 import (
-	"log"
 	"os"
 )
 
-func WipeDatabase() {
+func WipeDatabase() error {
 	file, err := os.OpenFile("database.txt", os.O_TRUNC|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer file.Close()
 
-	resetId()
+	err = resetId()
+	return err
 }

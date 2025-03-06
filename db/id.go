@@ -2,15 +2,14 @@ package db
 
 import (
 	"bufio"
-	"log"
 	"os"
 	"strconv"
 )
 
-func getNextIdThenIncrement() int {
+func getNextIdThenIncrement() (int, error) {
 	file, err := os.OpenFile("id.txt", os.O_RDONLY, 0644)
 	if err != nil {
-		log.Fatal(err)
+		return 0, err
 	}
 	defer file.Close()
 
@@ -19,28 +18,29 @@ func getNextIdThenIncrement() int {
 	idText := scanner.Text()
 	id, err := strconv.Atoi(idText)
 	if err != nil {
-		log.Fatal(err)
+		return 0, err
 	}
 
 	file, err = os.OpenFile("id.txt", os.O_TRUNC|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Fatal(err)
+		return 0, err
 	}
 	defer file.Close()
 	_, err = file.WriteString(strconv.Itoa(id + 1))
 	if err != nil {
-		log.Fatal(err)
+		return 0, err
 	}
 
-	return id
+	return id, nil
 }
 
-func resetId() {
+func resetId() error {
 	file, err := os.OpenFile("id.txt", os.O_TRUNC|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	defer file.Close()
 
-	file.WriteString(strconv.Itoa(1)) // Starting with 1 as first id
+	_, err = file.WriteString(strconv.Itoa(1)) // Starting with 1 as first id
+	return err
 }

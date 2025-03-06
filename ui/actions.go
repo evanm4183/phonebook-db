@@ -7,7 +7,7 @@ import (
 type Action struct {
 	Code   int
 	Name   string
-	Invoke func()
+	Invoke func() error
 }
 
 type ActionMap map[int]Action

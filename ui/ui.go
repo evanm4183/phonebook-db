@@ -27,7 +27,10 @@ func Run() {
 		action, ok := actionMap[code]
 		if ok {
 			printSeparator()
-			action.Invoke()
+			err = action.Invoke()
+			if err != nil {
+				fmt.Println(err)
+			}
 		} else {
 			fmt.Println("Action not found")
 		}

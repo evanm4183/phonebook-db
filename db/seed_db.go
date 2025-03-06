@@ -5,7 +5,7 @@ import (
 	"math/rand"
 )
 
-func SeedDatabase(numSeeds int) {
+func SeedDatabase(numSeeds int) error {
 	contacts := []Contact{}
 
 	for i := 0; i < numSeeds; i++ {
@@ -26,8 +26,13 @@ func SeedDatabase(numSeeds int) {
 	}
 
 	for _, c := range contacts {
-		AddContact(c)
+		err := AddContact(c)
+		if err != nil {
+			return err
+		}
 	}
+
+	return nil
 }
 
 func generateRandomPhoneNumber() string {

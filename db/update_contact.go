@@ -1,7 +1,10 @@
 package db
 
-func UpdateContact(contact *Contact) *Contact {
-	contacts := GetAllContacts()
+func UpdateContact(contact *Contact) (*Contact, error) {
+	contacts, err := GetAllContacts()
+	if err != nil {
+		return nil, err
+	}
 	var updated bool = false
 
 	for i := range contacts {
@@ -12,13 +15,19 @@ func UpdateContact(contact *Contact) *Contact {
 		}
 	}
 	if !updated {
-		return nil
+		return nil, nil
 	}
 
-	WipeDatabase()
+	err = WipeDatabase()
+	if err != nil {
+		return nil, err
+	}
 	for _, c := range contacts {
-		AddContact(c)
+		err = AddContact(c)
+		if err != nil {
+			return nil, err
+		}
 	}
 
-	return contact
+	return contact, nil
 }

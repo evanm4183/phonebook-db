@@ -9,7 +9,7 @@ import (
 	"strconv"
 )
 
-func deleteContact() {
+func deleteContact() error {
 	reader := bufio.NewReader(os.Stdin)
 
 	text := getInput("Id: ", reader)
@@ -18,10 +18,14 @@ func deleteContact() {
 		log.Fatal(err)
 	}
 
-	deleteSuccessful := db.DeleteContact(id)
-	if deleteSuccessful {
+	deleteSuccessful, err := db.DeleteContact(id)
+	if err != nil {
+		return err
+	} else if deleteSuccessful {
 		fmt.Println("Delete succeeded")
 	} else {
 		fmt.Printf("Could not find contact with Id: %d\n", id)
 	}
+
+	return nil
 }

@@ -2,10 +2,14 @@ package db
 
 import "slices"
 
-func DeleteContact(id int) bool {
+func DeleteContact(id int) (bool, error) {
 	found := false
 
-	contacts := GetAllContacts()
+	contacts, err := GetAllContacts()
+	if err != nil {
+		return false, err
+	}
+
 	for i := range contacts {
 		if contacts[i].Id == id {
 			contacts = slices.Delete(contacts, i, i+1)
@@ -14,12 +18,20 @@ func DeleteContact(id int) bool {
 		}
 	}
 	if !found {
-		return false
-	}
-	WipeDatabase()
-	for _, c := range contacts {
-		AddContact(c)
+		return false, nil
 	}
 
-	return found
+	err = WipeDatabase()
+	if err != nil {
+		return false, err
+	}
+
+	for _, c := range contacts {
+		err = AddContact(c)
+		if err != nil {
+			return false, err
+		}
+	}
+
+	return found, nil
 }

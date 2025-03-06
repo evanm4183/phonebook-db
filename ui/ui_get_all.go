@@ -5,9 +5,15 @@ import (
 	"phonebook/db"
 )
 
-func getAllContacts() {
-	contacts := db.GetAllContacts()
+func getAllContacts() error {
+	contacts, err := db.GetAllContacts()
+	if err != nil {
+		return err
+	}
+
 	for _, c := range contacts {
 		fmt.Println(c)
 	}
+
+	return nil
 }
