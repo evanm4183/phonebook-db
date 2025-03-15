@@ -1,7 +1,0 @@
-Todos:
-
-- Create gitignore
-
-- Make readme
-
-- Refactor methods (find, update, delete, add)
